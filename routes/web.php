@@ -20,10 +20,10 @@ use App\Http\Controllers\AdminController;
 Route::get('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
 Route::get('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'create'])->name('register');
 
-Route::get('/categories/{category}/news',
-    [CategoryController::class, 'showNews'])->name('categories.news');
+Route::get('/temp_categories/{category}/temp_news',
+    [CategoryController::class, 'showNews'])->name('temp_categories.temp_news');
 
-Route::get('/category/{id}/news', [CategoryController::class, 'showCategoryNews'])->name('category.news');
+Route::get('/category/{id}/temp_news', [CategoryController::class, 'showCategoryNews'])->name('category.temp_news');
 
 
 
@@ -37,39 +37,39 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::resource('categories', CategoryController::class);
+Route::resource('temp_categories', CategoryController::class);
 
 
-Route::resource('news', NewsController::class);
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-Route::get('/categories/{category}/news',
-    [CategoryController::class, 'showNews'])->name('categories.news');
+Route::resource('temp_news', NewsController::class);
+Route::get('/temp_news/{id}', [NewsController::class, 'show'])->name('temp_news.show');
+Route::get('/temp_categories/{category}/temp_news',
+    [CategoryController::class, 'showNews'])->name('temp_categories.temp_news');
 
-Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->name('frontend.categoryList');
+Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->name('temp_frontend.categoryList');
 
-Route::get('/category/{id}/news', [CategoryController::class, 'showCategoryNews'])->name('category.news');
+Route::get('/category/{id}/temp_news', [CategoryController::class, 'showCategoryNews'])->name('category.temp_news');
 
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/temp_news/{id}', [NewsController::class, 'show'])->name('temp_news.show');
 
 
 require __DIR__.'/auth.php';
 
-Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->name('frontend.categoryList');
+Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->name('temp_frontend.categoryList');
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::group(['middleware' => ['superAdmin']], function () {
-        Route::resource('admins', AdminController::class);
-        Route::get('/admin', [AdminController::class, 'index'])->name('admins.index');
-        Route::get('/admin/create', [AdminController::class, 'create'])->name('admins.create');
-        Route::post('/admin/store', [AdminController::class, 'store'])->name('admins.store');
+        Route::resource('temp_admins', AdminController::class);
+        Route::get('/admin', [AdminController::class, 'index'])->name('temp_admins.index');
+        Route::get('/admin/create', [AdminController::class, 'create'])->name('temp_admins.create');
+        Route::post('/admin/store', [AdminController::class, 'store'])->name('temp_admins.store');
 
     });
 
-    Route::resource('categories', CategoryController::class);
+    Route::resource('temp_categories', CategoryController::class);
 
 
-    Route::resource('news', NewsController::class);
+    Route::resource('temp_news', NewsController::class);
 
 });
 

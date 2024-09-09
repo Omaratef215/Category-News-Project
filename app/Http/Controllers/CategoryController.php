@@ -12,20 +12,20 @@ class CategoryController extends Controller
         $test = Category::with('children')->where('parent_id' , null)->get();
 /*        dd($test);*/
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        return view('temp_categories.index', compact('categories'));
     }
     public function create()
     {
         $categories = Category::with('children')->where('parent_id', null)->get();
         $categories = Category::all();
-        return view('categories.create', compact('categories'));
+        return view('temp_categories.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:60|string|unique:categories,name',
-            'parent_id' => 'nullable|exists:categories,id' ],
+            'name' => 'required|max:60|string|unique:temp_categories,name',
+            'parent_id' => 'nullable|exists:temp_categories,id' ],
          [   'name.unique' => 'The category name has already been taken. Please choose a different name.',
         ]);
 
@@ -34,14 +34,14 @@ class CategoryController extends Controller
             'parent_id' => $request->input('parent_id'),
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('temp_categories.index')->with('success', 'Category created successfully.');
     }
 
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|string|unique:categories,name,' . $category->id ,
-            'parent_id' => 'nullable|exists:categories,id',
+            'name' => 'required|string|unique:temp_categories,name,' . $category->id ,
+            'parent_id' => 'nullable|exists:temp_categories,id',
         ]);
 
         $category->update([
@@ -49,32 +49,32 @@ class CategoryController extends Controller
             'parent_id' => $request->input('parent_id'),
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('temp_categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function edit(Category $category)
     {
         $categories = Category::all();
-        return view('categories.edit', compact('category', 'categories'));
+        return view('temp_categories.edit', compact('category', 'categories'));
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('temp_categories.index')->with('success', 'Category created successfully.');
     }
 
     public function showNews(Category $category)
     {
         $news = $category->news;
-        return view('categories.news', compact('news', 'category'));
+        return view('temp_categories.temp_news', compact('news', 'category'));
     }
 
     public function showCategoryList()
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
 
-        return view('frontend.categoryList', compact('categories'));
+        return view('temp_frontend.categoryList', compact('categories'));
     }
 
     public function showCategoryNews($id)
@@ -85,10 +85,10 @@ class CategoryController extends Controller
         $newsItems = $category->news;
 
         if ($newsItems->isEmpty()) {
-            dd("No news items found for category ID: $id");
+            dd("No temp_news items found for category ID: $id");
         }
 
-        return view('frontend.newList', compact('category', 'newsItems'));
+        return view('temp_frontend.newList', compact('category', 'newsItems'));
     }
 
 }

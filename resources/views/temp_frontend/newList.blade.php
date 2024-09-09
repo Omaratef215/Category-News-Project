@@ -13,7 +13,7 @@
                     <div class="bg-white shadow-lg rounded-lg p-5">
                         <h2 class="text-xl font-semibold">{{ $news->title }}</h2>
                         <p class="mt-2">{{ Str::limit($news->content, 20) }}</p>
-                        <a href="{{ route('news.show', $news->id) }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mt-3 inline-block">
+                        <a href="{{ route('temp_news.show', $news->id) }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mt-3 inline-block">
                             Read More
                         </a>
                     </div>
@@ -27,7 +27,7 @@
                         <div class="bg-white shadow-lg rounded-lg p-5">
                             <h2 class="text-xl font-semibold">{{ $news->title }}</h2>
                             <p class="mt-2">{{ Str::limit($news->content, 20) }}</p>
-                            <a href="{{ route('news.show', $news->id) }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mt-3 inline-block">
+                            <a href="{{ route('temp_news.show', $news->id) }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mt-3 inline-block">
                                 Read More
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                 </div>
             @endforeach
 
-            <a href="{{ route('frontend.categoryList') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mt-5 inline-block">
+            <a href="{{ route('temp_frontend.categoryList') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mt-5 inline-block">
                 Back to Categories
             </a>
         </div>

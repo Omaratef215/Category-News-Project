@@ -9,6 +9,6 @@
 
 @if ($category->children)
     @foreach ($category->children as $childCategory)
-        @include('partials.category-checkbox', ['category' => $childCategory, 'level' => $level + 1])
+        @include('temp_partials.category-checkbox', ['category' => $childCategory, 'level' => $level + 1])
     @endforeach
 @endif

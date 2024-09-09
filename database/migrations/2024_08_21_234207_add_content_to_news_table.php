@@ -12,14 +12,14 @@ return new class extends Migration
     public function up()
     {
         Schema::dropIfExists('content');
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('temp_news', function (Blueprint $table) {
             $table->text('content')->nullable();
         });
     }
 
     public function down()
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('temp_news', function (Blueprint $table) {
             $table->dropColumn('content');
         });
     }

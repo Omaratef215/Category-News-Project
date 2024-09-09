@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('temp_news', function (Blueprint $table) {
             // Drop the foreign key constraint first
             $table->dropForeign(['category_id']);
 
@@ -22,12 +22,12 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::table('news', function (Blueprint $table) {
+        Schema::table('temp_news', function (Blueprint $table) {
             // Re-add the category_id column
             $table->unsignedBigInteger('category_id')->nullable();
 
             // Re-create the foreign key constraint
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('temp_categories')->onDelete('cascade');
         });
     }
 

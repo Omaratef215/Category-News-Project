@@ -9,8 +9,8 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $news = News::with('categories')->get();
-        return view('news.index', compact('news'));
+        $news = News::with('temp_categories')->get();
+        return view('temp_news.index', compact('news'));
     }
 
 
@@ -19,18 +19,18 @@ class NewsController extends Controller
     {
         $categories = Category::with('children')->where('parent_id', null)->get();
         $categories = Category::all();
-        return view('news.create', compact('categories'));
+        return view('temp_news.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:60|string|unique:news,title',
-            'categories' => 'required|array|min:1',
+            'title' => 'required|max:60|string|unique:temp_news,title',
+            'temp_categories' => 'required|array|min:1',
             'content' => 'required'],[
             'title.unique' => 'The title has already been taken. Please choose a different title.',
-            'categories.required' => 'Please select at least one category.',
-            'categories.min' => 'Please select at least one category.',
+            'temp_categories.required' => 'Please select at least one category.',
+            'temp_categories.min' => 'Please select at least one category.',
         ]);
 
             $news = News::create([
@@ -39,9 +39,9 @@ class NewsController extends Controller
         ]);
 
 
-        $news->categories()->attach($request->input('categories'));
+        $news->categories()->attach($request->input('temp_categories'));
 
-        return redirect()->route('news.index')->with('success', 'news created successfully.');
+        return redirect()->route('temp_news.index')->with('success', 'temp_news created successfully.');
     }
 
 
@@ -50,7 +50,7 @@ class NewsController extends Controller
     {
         $categories = Category::all();
         $selectedCategories = $news->categories->pluck('id')->toArray();
-        return view('news.edit', compact('news', 'categories'));
+        return view('temp_news.edit', compact('news', 'categories'));
     }
 
     public function update(Request $request, News $news)
@@ -58,7 +58,7 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'categories' => 'required|array',
+            'temp_categories' => 'required|array',
         ]);
 
         $news->update([
@@ -66,16 +66,16 @@ class NewsController extends Controller
             'content' => $request->input('content'),
         ]);
 
-        $news->categories()->sync($request->input('categories'));
+        $news->categories()->sync($request->input('temp_categories'));
 
-        return redirect()->route('news.index')->with('success', 'news updated successfully.');
+        return redirect()->route('temp_news.index')->with('success', 'temp_news updated successfully.');
     }
 
 
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('news.index');
+        return redirect()->route('temp_news.index');
     }
 
     public function show($id)
@@ -86,6 +86,6 @@ class NewsController extends Controller
             abort(404);
         }
 
-        return view('news.show', compact('news'));
+        return view('temp_news.show', compact('news'));
     }
 }

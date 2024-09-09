@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('temp_categories', function (Blueprint $table) {
             $table->unsignedBigInteger('parent_id')->nullable()->after('name');
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('temp_categories')->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::table('categories', function (Blueprint $table) {
+        Schema::table('temp_categories', function (Blueprint $table) {
             $table->dropForeign(['parent_id']);
             $table->dropColumn('parent_id');
         });
