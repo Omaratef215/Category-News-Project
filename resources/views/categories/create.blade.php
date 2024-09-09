@@ -4,14 +4,14 @@
     </x-slot:heading>
 
     <x-slot:nav>
-        <a href="{{ route('temp_news.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">
+        <a href="{{ route('news.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">
             News
         </a>
     </x-slot:nav>
 
     @section('content')
         <div class="container">
-            <form action="{{ route('temp_categories.store') }}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <div class="form-group mb-4">
                     <label for="name" class="text-1xl font-bold tracking-tight text-gray-900">Category Name : </label>
@@ -31,7 +31,7 @@
                 </div>
 
                 <button type="submit" class="rounded-md bg-blue-500 px-4 py-2 text-white mb-3 inline-block">Create</button>
-                <a href="{{ route('temp_categories.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mb-3 inline-block ml-2">Back</a>
+                <a href="{{ route('categories.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mb-3 inline-block ml-2">Back</a>
             </form>
         </div>
     @endsection

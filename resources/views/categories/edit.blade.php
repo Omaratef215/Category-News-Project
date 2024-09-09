@@ -9,7 +9,7 @@
 
     @section('content')
             <div class="container">
-                <form action="{{ route('temp_categories.update', $category->id) }}" method="POST">
+                <form action="{{ route('categories.update', $category->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
@@ -35,7 +35,7 @@
                     </div>
 
                     <button type="submit" class="rounded-md bg-blue-500 px-4 py-2 text-white mb-3 inline-block">Update</button>
-                    <a href="{{ route('temp_categories.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mb-3 inline-block ml-2">Back</a>
+                    <a href="{{ route('categories.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mb-3 inline-block ml-2">Back</a>
                 </form>
             </div>
         @endsection

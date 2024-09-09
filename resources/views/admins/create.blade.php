@@ -11,7 +11,7 @@
         <div class="container mx-auto py-6">
             <h1 class="text-3xl font-bold mb-6">Create New Admin</h1>
 
-            <form action="{{ route('temp_admins.store') }}" method="POST">
+            <form action="{{ route('admins.store') }}" method="POST">
                 @csrf
                 <div class="mb-4">
                     <label for="name" class="text-xl">Name</label>
@@ -45,7 +45,7 @@
                 <button type="submit" class="rounded-md bg-blue-500 px-4 py-2 text-white mt-3 inline-block">
                     Create Admin
                 </button>
-                <a href="{{ route('temp_admins.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mt-3 inline-block ml-4">
+                <a href="{{ route('admins.index') }}" class="rounded-md bg-red-500 px-4 py-2 text-white mt-3 inline-block ml-4">
                     Back
                 </a>
             </form>

@@ -13,7 +13,7 @@
                 @endforeach
             </ul>
 
-            <a href="{{ route('temp_categories.index') }}" class="inline-block rounded-md bg-red-500 px-4 py-2 text-white font-semibold hover:bg-red-600 transition duration-300">Back to Categories</a>
+            <a href="{{ route('categories.index') }}" class="inline-block rounded-md bg-red-500 px-4 py-2 text-white font-semibold hover:bg-red-600 transition duration-300">Back to Categories</a>
         </div>
     @endsection
 </x-layout>

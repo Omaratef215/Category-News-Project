@@ -13,12 +13,12 @@ class AdminController extends Controller
     public function index()
     {
         $admins = User::where('role', 'admin')->get();
-        return view('temp_admins.index', compact('admins'));
+        return view('admins.index', compact('admins'));
     }
 
     public function create()
     {
-        return view('temp_admins.create');
+        return view('admins.create');
     }
 
     public function store(AdminStoreRequesr $request)
@@ -30,7 +30,7 @@ class AdminController extends Controller
             'role' => 'admin',
         ]);
 
-        return redirect()->route('temp_admins.index');
+        return redirect()->route('admins.index');
     }
     public function destroy($id)
     {
@@ -38,7 +38,7 @@ class AdminController extends Controller
 
         $admin->delete();
 
-        return redirect()->route('temp_admins.index');
+        return redirect()->route('admins.index');
     }
 
 }

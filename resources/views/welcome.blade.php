@@ -22,10 +22,10 @@
 
                                        <a href="/categories" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Categories</a>
                             <a href="/news" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">News</a>
-                            <a href="{{ route('temp_frontend.categoryList') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">
+                            <a href="{{ route('frontend.categoryList') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">
                                 Site
                             </a>
-                            <a href="{{ route('temp_categories.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" style="margin-left: 760px">
+                            <a href="{{ route('categories.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page" style="margin-left: 760px">
                                 Admin
                             </a>
                         </div>
