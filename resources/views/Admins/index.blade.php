@@ -37,7 +37,7 @@
 
     @section('content')
         <div class="container">
-            <a href="{{ route('Admins.create') }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mb-3 inline-block">Create New Admin</a>
+            <a href="{{ route('admins.create') }}" class="rounded-md bg-blue-500 px-4 py-2 text-white mb-3 inline-block">Create New Admin</a>
 
             <table class="table-auto w-full mt-5 text-center">
                 <thead>

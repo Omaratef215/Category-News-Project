@@ -10,7 +10,7 @@
                     </a>
                 @endif
                     @if(Auth::check() && Auth::user()->role === 'admin' && Auth::user()->super_role ==='yes')
-                        <a href="{{ route('Admins.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Add Admin</a>
+                        <a href="{{ route('admins.index') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Add Admin</a>
                     @endif
                 @if(Auth::check())
                     <form method="POST" action="{{ route('logout') }}">

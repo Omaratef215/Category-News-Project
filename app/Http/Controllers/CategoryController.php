@@ -88,7 +88,7 @@ class CategoryController extends Controller
             dd("No news items found for category ID: $id");
         }
 
-        return view('Frontend.newList', compact('category', 'newsItems'));
+        return view('frontend.newList', compact('category', 'newsItems'));
     }
 
 }
