@@ -33,7 +33,7 @@
         </div>
     </x-slot:nav>
 
-    @section('title', 'Admins')
+    @section('title', 'admins')
 
     @section('content')
         <div class="container">
@@ -56,7 +56,7 @@
                         <td class="border px-4 py-2">{{ $admin->email }}</td>
                         <td class="border px-4 py-2">
                             <div class="flex justify-center space-x-2">
-                                <form action="{{ route('Admins.destroy', $admin->id) }}" method="POST" style="display:inline-block;">
+                                <form action="{{ route('admins.destroy', $admin->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="rounded-md bg-red-500 px-4 py-2 text-white">Delete</button>

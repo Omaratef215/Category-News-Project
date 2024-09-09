@@ -5,7 +5,7 @@
     <x-slot:nav>
     </x-slot:nav>
 
-    @section('title', 'Create News Item')
+    @section('title', 'Create news Item')
 
     @section('content')
         <div class="container">

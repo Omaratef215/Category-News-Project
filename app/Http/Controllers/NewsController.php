@@ -41,7 +41,7 @@ class NewsController extends Controller
 
         $news->categories()->attach($request->input('categories'));
 
-        return redirect()->route('news.index')->with('success', 'News created successfully.');
+        return redirect()->route('news.index')->with('success', 'news created successfully.');
     }
 
 
@@ -68,7 +68,7 @@ class NewsController extends Controller
 
         $news->categories()->sync($request->input('categories'));
 
-        return redirect()->route('news.index')->with('success', 'News updated successfully.');
+        return redirect()->route('news.index')->with('success', 'news updated successfully.');
     }
 
 

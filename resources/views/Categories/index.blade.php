@@ -30,7 +30,7 @@
         </div>
     </x-slot:nav>
 
-    @section('title', 'Categories')
+    @section('title', 'categories')
 
     @section('content')
         <div class="container">

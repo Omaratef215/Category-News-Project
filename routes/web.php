@@ -59,7 +59,7 @@ Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->n
 Route::group(['middleware' => ['auth', 'admin']], function () {
 
     Route::group(['middleware' => ['superAdmin']], function () {
-        Route::resource('Admins', AdminController::class);
+        Route::resource('admins', AdminController::class);
         Route::get('/admin', [AdminController::class, 'index'])->name('admins.index');
         Route::get('/admin/create', [AdminController::class, 'create'])->name('admins.create');
         Route::post('/admin/store', [AdminController::class, 'store'])->name('admins.store');
