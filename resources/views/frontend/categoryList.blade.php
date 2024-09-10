@@ -37,23 +37,14 @@
                     <div class="bg-white shadow-md rounded-lg p-6">
                         <h2 class="text-xl font-semibold">{{ $category->name }}</h2>
 
-
                         <button onclick="toggleSubcategories({{ $category->id }})" class="rounded-md bg-gray-500 px-4 py-2 text-white mt-3">
                             Show Subcategories
                         </button>
 
                         <div id="subcategories-{{ $category->id }}" style="display: none;" class="mt-3">
                             @if ($category->children && $category->children->count())
-                                <ul class="list-disc ml-5 mt-3 space-y-2">
-                                    @foreach ($category->children as $subcategory)
-                                        <li class="flex items-center space-x-2">
-                                            <span class="font-medium text-lg">{{ $subcategory->name }}</span>
-                                            <a href="{{ route('category.news', $subcategory->id) }}" class="text-blue-500 underline">
-                                                Show News
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
+
+                                @include('partials.subcategory', ['subcategories' => $category->children])
                             @else
                                 <p class="text-gray-600 mt-3">No subcategories available.</p>
                             @endif
