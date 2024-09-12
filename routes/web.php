@@ -25,8 +25,6 @@ Route::get('/categories/{category}/news',
 
 Route::get('/category/{id}/news', [CategoryController::class, 'showCategoryNews'])->name('category.news');
 
-
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/category-list', [\App\Http\Controllers\CategoryController::class, 'showCategoryList'])->name('category.list');
@@ -34,11 +32,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/', function () {
+
     return redirect()->route('login');
 });
 
 Route::resource('categories', CategoryController::class);
-
 
 Route::resource('news', NewsController::class);
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
@@ -51,7 +49,6 @@ Route::get('/category/{id}/news', [CategoryController::class, 'showCategoryNews'
 
 Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
 
-
 require __DIR__.'/auth.php';
 
 Route::get('/category-list', [CategoryController::class, 'showCategoryList'])->name('frontend.categoryList');
@@ -63,13 +60,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::get('/admin', [AdminController::class, 'index'])->name('admins.index');
         Route::get('/admin/create', [AdminController::class, 'create'])->name('admins.create');
         Route::post('/admin/store', [AdminController::class, 'store'])->name('admins.store');
-
     });
 
     Route::resource('categories', CategoryController::class);
 
-
     Route::resource('news', NewsController::class);
 
 });
-

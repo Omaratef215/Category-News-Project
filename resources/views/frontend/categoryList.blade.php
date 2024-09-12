@@ -23,6 +23,10 @@
                     <a href="{{ route('login') }}" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white hover:bg-blue-600">
                         Login
                     </a>
+
+                        <a href="{{ route('register') }}" class="rounded-md bg-blue-500 px-3 py-2 text-sm font-medium text-white hover:bg-blue-600">
+                            Register
+                        </a>
                 @endif
             </div>
         </div>
